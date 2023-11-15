@@ -1,13 +1,18 @@
 'use client'
 import { Dispatch, ReactNode, SetStateAction, useState } from 'react'
-import { Button } from '@/components/Button'
+import { Button } from './Button'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
-import { BaseItemAttributes } from '@/types/strapi'
-import { EmbedHTML } from '@/components/EmbedHTML'
 
-interface ControlledCarouselProps {
+export interface CarrouselItemProps {
+  id: number | string
+  title?: ReactNode
+  content?: ReactNode
+  nav?: ReactNode
+}
+
+export interface CarrouselProps {
   id: string
-  items: BaseItemAttributes[]
+  items: CarrouselItemProps[]
   onChange?: Dispatch<SetStateAction<number>>
   content?: (index: number) => ReactNode
   classes?: {
@@ -18,13 +23,13 @@ interface ControlledCarouselProps {
   }
 }
 
-export const ControlledCarousel = ({
+export const Carrousel = ({
   items,
   onChange,
   classes,
   content,
   id,
-}: ControlledCarouselProps) => {
+}: CarrouselProps) => {
   const [index, setIndex] = useState<number>(0)
 
   const handleIndex = (action: 'prev' | 'next') => {
@@ -70,33 +75,33 @@ export const ControlledCarousel = ({
             classes?.navItems || ''
           }`}
         >
-          {items?.map((item, i) => (
-            <div className="" key={item.id}>
-              <Button
-                size="medium"
-                className={`whitespace-nowrap w-full flex justify-center ${
-                  classes?.nav || ''
-                } ${index === i ? classes?.navActive : 'bg-inherit'}`}
-                onClick={() => {
-                  setIndex(i)
-                  if (typeof onChange === 'function') {
-                    onChange(i)
-                  }
-                }}
-              >
-                <EmbedHTML className="" html={item.caption} />
-              </Button>
-            </div>
-          ))}
+          {items?.map((item, i) => {
+            if (!item.nav) return null
+            return (
+              <div className="" key={item.id}>
+                <Button
+                  size="medium"
+                  className={`whitespace-nowrap w-full flex justify-center ${
+                    classes?.nav || ''
+                  } ${index === i ? classes?.navActive : 'bg-inherit'}`}
+                  onClick={() => {
+                    setIndex(i)
+                    if (typeof onChange === 'function') {
+                      onChange(i)
+                    }
+                  }}
+                >
+                  {item.nav}
+                </Button>
+              </div>
+            )
+          })}
         </div>
         <div className={`grid gap-6 carrousel-content-${id}`}>
           {content?.(index) || (
             <>
-              <EmbedHTML
-                className="text-xl md:text-4xl"
-                html={items?.[index].title}
-              />
-              <EmbedHTML className="" html={items?.[index].content} />
+              {items?.[index].title}
+              {items?.[index].content}
             </>
           )}
         </div>
