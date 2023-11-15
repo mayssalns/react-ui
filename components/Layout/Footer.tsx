@@ -1,6 +1,5 @@
 import { ContactData, LayoutAttributes } from '@/types/strapi'
 import Link from 'next/link'
-import { StripiMedia } from '../Shared/StripiMedia'
 
 interface FooterProps {
   attributes: LayoutAttributes
@@ -144,7 +143,7 @@ export const Footer = ({ attributes, contact }: FooterProps) => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <StripiMedia media={item.media?.data?.attributes} alt="" />
+                    Image
                   </a>
                 ))}
               </div>
