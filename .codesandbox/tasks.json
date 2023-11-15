@@ -16,36 +16,28 @@
     },
     "build": {
       "name": "build",
-      "command": "npm run build",
-      "runAtStart": false
+      "command": "npm run build"
     },
     "start": {
       "name": "start",
-      "command": "npm run start",
-      "runAtStart": false
+      "command": "npm run start"
     },
     "lint": {
       "name": "lint",
-      "command": "npm run lint",
-      "runAtStart": false
+      "command": "npm run lint"
     },
     "storybook": {
       "name": "storybook",
-      "command": "npm run storybook",
-      "runAtStart": false
+      "command": "npm run storybook"
     },
     "build-storybook": {
       "name": "build-storybook",
-      "command": "npm run build-storybook",
-      "runAtStart": false
+      "command": "npm run build-storybook"
     },
-    "npm start & npm run storybook": {
-      "name": "npm start & npm run storybook",
-      "command": "npm start & npm run storybook",
-      "runAtStart": true,
-      "preview": {
-        "port": 6006
-      }
+    "npm run build & npm start & npm run storybook": {
+      "name": "npm run build & npm start & npm run storybook",
+      "command": "npm run build & npm start & npm run storybook",
+      "runAtStart": true
     }
   }
 }
