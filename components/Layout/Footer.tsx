@@ -1,14 +1,9 @@
-import { ContactData, LayoutAttributes } from '@/types/strapi'
-import Link from 'next/link'
-
 interface FooterProps {
-  attributes: LayoutAttributes
-  contact: ContactData
+  copyright?: string
 }
 
-export const Footer = ({ attributes, contact }: FooterProps) => {
-  const { company, product, resources, copyright } = attributes
-
+export const Footer = (props: FooterProps) => {
+  const { copyright } = props
   return (
     <footer className="text-center relative text-white md:text-left w-full s-footer bg-black-950 grid content-center">
       <div className="hidden absolute bottom-0 lg:block left-0">
@@ -64,49 +59,49 @@ export const Footer = ({ attributes, contact }: FooterProps) => {
             <div className="md:flex  gap-4 md:gap-6 lg:gap-x-16">
               <div className="mb-6">
                 <h5 className="mb-6 font-bold text-gray-800">
-                  {product.label}
+                  {/* {product.label} */}
                 </h5>
 
                 <ul className="mb-0 list-none grid gap-y-4">
-                  {product.items.map((item, index) => (
+                  {/* {product.items.map((item, index) => (
                     <li key={index}>
                       <a href={item.href} className=" ">
                         {item.label}
                       </a>
                     </li>
-                  ))}
+                  ))} */}
                 </ul>
               </div>
 
               <div className="mb-6">
                 <h5 className="mb-6 font-bold text-gray-800">
-                  {resources.label}
+                  {/* {resources.label} */}
                 </h5>
 
                 <ul className="mb-0 list-none grid gap-y-4">
-                  {resources.items.map((item, index) => (
+                  {/* {resources.items.map((item, index) => (
                     <li key={index}>
                       <Link href={item.href} className="">
                         {item.label}
                       </Link>
                     </li>
-                  ))}
+                  ))} */}
                 </ul>
               </div>
 
               <div className="mb-6">
                 <h5 className="mb-6 font-bold text-gray-800">
-                  {company.label}
+                  {/* {company.label} */}
                 </h5>
 
                 <ul className="mb-0 list-none grid gap-y-4">
-                  {company.items.map((item, index) => (
+                  {/* {company.items.map((item, index) => (
                     <li key={index}>
                       <Link href={item.href} className="">
                         {item.label}
                       </Link>
                     </li>
-                  ))}
+                  ))} */}
                 </ul>
               </div>
             </div>
@@ -116,26 +111,26 @@ export const Footer = ({ attributes, contact }: FooterProps) => {
 
             <div className="mb-6 grid">
               <p className="text-center lg:text-right">
-                {`${contact.street.label} ${contact.streetNumber}`}
+                {/* {`${contact.street.label} ${contact.streetNumber}`} */}
                 <br />
-                {`${contact.optional}, ${contact.postalCode}`}
+                {/* {`${contact.optional}, ${contact.postalCode}`} */}
               </p>
               <p className="flex flex-col text-center lg:text-right">
-                {contact.phone.map((item) => (
+                {/* {contact.phone.map((item) => (
                   <a href={`tel:${item.href}`} className="" key={item.id}>
                     {item.label}
                   </a>
-                ))}
+                ))} */}
               </p>
               <p className="flex flex-col text-center lg:text-right">
-                {contact.email.map((item) => (
+                {/* {contact.email.map((item) => (
                   <a href={`mailto:${item.href}`} className="" key={item.id}>
                     {item.label}
                   </a>
-                ))}
+                ))} */}
               </p>
               <div className="flex gap-4 items-center justify-center lg:justify-end">
-                {contact.social.map((item) => (
+                {/* {contact.social.map((item) => (
                   <a
                     key={item.id}
                     className=""
@@ -145,7 +140,7 @@ export const Footer = ({ attributes, contact }: FooterProps) => {
                   >
                     Image
                   </a>
-                ))}
+                ))} */}
               </div>
             </div>
 

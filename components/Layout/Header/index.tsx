@@ -1,43 +1,15 @@
-import {
-  LayoutAttributes,
-  LinkAttributes,
-  LocaleAttribute,
-} from '@/types/strapi'
 import { Logo } from '../Logo'
-import { MobileMenu } from './MobileMenu'
-import { SolutionsMenu } from './SolutionsMenu'
 import { LocaleMenu } from './LocaleMenu'
 import { Button } from '@/components/Button'
+import { cookies } from 'next/headers'
+import { Locale, i18n } from '@/services/i18n'
 
-interface HeaderProps {
-  attributes: LayoutAttributes
-  locale: LocaleAttribute
-}
+interface HeaderProps {}
 
-export const Header = ({ attributes, locale }: HeaderProps) => {
-  const { solutions, company, product, resources } = attributes
-
-  const items = [...company.items, ...product.items, ...resources.items]
-
-  const menu = [] as LinkAttributes[]
-
-  items.forEach((item) => {
-    if (['/services'].includes(item.href)) {
-      menu[0] = item
-    }
-    if (['/about-us'].includes(item.href)) {
-      menu[1] = item
-    }
-    if (['/contact-us'].includes(item.href)) {
-      menu[2] = item
-    }
-    if (['/faq'].includes(item.href)) {
-      menu[3] = item
-    }
-    if (['/plans'].includes(item.href)) {
-      menu[4] = item
-    }
-  })
+export const Header = (props: HeaderProps) => {
+  const cookieStore = cookies()
+  const locale = (cookieStore.get('locale')?.value ||
+    i18n.defaultLocale) as Locale
 
   return (
     <nav
@@ -52,26 +24,26 @@ export const Header = ({ attributes, locale }: HeaderProps) => {
       <div className="flex lg:hidden gap-x-6">
         <Button
           size="large"
-          href={attributes.logIn.href}
+          href="# "
           className="text-white dark:text-black-950 font-semibold bg-secondary dark:bg-white"
         >
-          {attributes.logIn.label}
+          LogIn
         </Button>
-        <MobileMenu
+        {/* <MobileMenu
           items={solutions.items}
           title={solutions.title}
           label={solutions.label}
           locale={attributes.locale}
           menu={menu}
-        />
+        /> */}
       </div>
-      <SolutionsMenu
+      {/* <SolutionsMenu
         items={solutions.items}
-        title={solutions.title}
-        label={solutions.label}
+        title="Menu"
+        label="Submenu"
         locale={attributes.locale}
         menu={menu}
-      />
+      /> */}
       <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-x-5 ml-5">
         <LocaleMenu
           locale={locale}
@@ -82,19 +54,19 @@ export const Header = ({ attributes, locale }: HeaderProps) => {
         />
         <Button
           size="large"
-          href={attributes?.logIn?.href}
+          href="# "
           target="_blank"
           className="border text-secondary dark:text-white border-secondary dark:border-white font-semibold"
         >
-          {attributes.logIn.label}
+          LogIn
         </Button>
         <Button
           size="large"
-          href={attributes?.signUp?.href}
+          href="# "
           target="_blank"
           className="border bg-secondary dark:bg-white font-semibold text-white dark:text-secondary"
         >
-          {attributes?.signUp?.label}
+          Sign Up
         </Button>
       </div>
     </nav>
