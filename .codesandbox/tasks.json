@@ -39,10 +39,13 @@
       "command": "npm run build-storybook",
       "runAtStart": false
     },
-    "npm run dev & npm run storybook": {
-      "name": "npm run dev & npm run storybook",
-      "command": "npm run dev & npm run storybook",
-      "runAtStart": true
+    "npm start & npm run storybook": {
+      "name": "npm start & npm run storybook",
+      "command": "npm start & npm run storybook",
+      "runAtStart": true,
+      "preview": {
+        "port": 6006
+      }
     }
   }
 }
