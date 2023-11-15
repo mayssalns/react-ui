@@ -5,7 +5,6 @@ import { ToastContainer } from 'react-toastify'
 import { Footer } from '@/components/Layout/Footer'
 import { Locale, i18n } from '@/services/i18n'
 import { ReactNode } from 'react'
-import { cookies } from 'next/headers'
 import { getDictionary } from './dictionaries'
 import { NextIntlClientProvider } from 'next-intl'
 
@@ -19,9 +18,7 @@ export default async function RootTemplate({
 }: {
   children: ReactNode
 }) {
-  const cookieStore = cookies()
-  const locale = (cookieStore.get('locale')?.value ||
-    i18n.defaultLocale) as Locale
+  const locale = i18n.defaultLocale as Locale
 
   const t = await getDictionary(locale)
 

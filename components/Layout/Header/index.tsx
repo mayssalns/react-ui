@@ -1,15 +1,12 @@
 import { Logo } from '../Logo'
 import { LocaleMenu } from './LocaleMenu'
 import { Button } from '@/components/Button'
-import { cookies } from 'next/headers'
 import { Locale, i18n } from '@/services/i18n'
 
 interface HeaderProps {}
 
 export const Header = (props: HeaderProps) => {
-  const cookieStore = cookies()
-  const locale = (cookieStore.get('locale')?.value ||
-    i18n.defaultLocale) as Locale
+  const locale = i18n.defaultLocale as Locale
 
   return (
     <nav
