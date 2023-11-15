@@ -2,7 +2,6 @@
 import { LocaleAttribute } from '@/types/strapi'
 import { Menu, MenuItem } from '@mui/material'
 import { GlobeAltIcon } from '@heroicons/react/24/outline'
-import { cookieSet } from '@/app/cookies'
 import { Button } from '@/components/Button'
 import { MouseEvent, useState } from 'react'
 
@@ -22,10 +21,10 @@ export function LocaleMenu({ items, locale }: LocaleMenuProps) {
   }
 
   const onChangeHandler = (value: LocaleAttribute) => {
-    cookieSet({
-      name: 'locale',
-      value,
-    })
+    // cookieSet({
+    //   name: 'locale',
+    //   value,
+    // })
   }
 
   return (
