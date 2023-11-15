@@ -1,0 +1,38 @@
+.SennoUi.button {
+  border-radius: 0.25rem/* 4px */;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  gap: 8px;
+  &.large {
+    @apply text-base px-9 py-2;
+    height: 2.75rem/* 44px */;
+  }
+
+  &.small {
+    @apply px-3 text-xs;
+    height: 1.5rem/* 24px */;
+  }
+
+  &.medium {
+    @apply px-3 text-sm;
+    height: 2rem/* 32px */;
+  }
+}
+
+.SennoUi {
+  &.accordion-toggle .accordion-icon {
+    transition: .3s;
+  }
+  &.accordion-toggle.show .accordion-icon {
+    transform: rotate(180deg);
+    transition: .3s;
+  }
+
+  &.accordion-collapse {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.35s ease;
+  }
+}

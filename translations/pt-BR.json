@@ -1,0 +1,11 @@
+{
+  "fields": {
+    "required": "Campo obrigatório",
+    "invalid": {
+      "email": "Este não é um e-mail válido"
+    }
+  },
+  "actions": {
+    "cancel": "Cancelar"
+  }
+}
